@@ -1,0 +1,38 @@
+{
+  "name": "my-todo-list",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:web": "turbo -F web dev",
+    "dev:server": "turbo -F server dev",
+    "db:push": "turbo -F @my-todo-list/db db:push",
+    "db:studio": "turbo -F @my-todo-list/db db:studio",
+    "db:generate": "turbo -F @my-todo-list/db db:generate",
+    "db:migrate": "turbo -F @my-todo-list/db db:migrate",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@my-todo-list/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.16",
+    "@my-todo-list/config": "workspace:*",
+    "@types/node": "catalog:",
+    "husky": "latest",
+    "turbo": "^2.9.16",
+    "typescript": "catalog:",
+    "ultracite": "7.8.3"
+  },
+  "packageManager": "pnpm@11.6.0"
+}

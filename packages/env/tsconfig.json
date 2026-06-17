@@ -1,0 +1,6 @@
+{
+  "extends": "@my-todo-list/config/tsconfig.base.json",
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}

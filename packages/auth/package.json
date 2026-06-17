@@ -1,0 +1,24 @@
+{
+  "name": "@my-todo-list/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@my-todo-list/db": "workspace:*",
+    "@my-todo-list/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@my-todo-list/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
