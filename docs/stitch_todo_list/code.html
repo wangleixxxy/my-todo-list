@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 30px;
+            background: #191c1f;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+            z-index: 100;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#930013",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-highest": "#e0e2e6",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eff1f5",
+                        "on-primary-container": "#fefcff",
+                        "inverse-surface": "#2d3134",
+                        "on-surface": "#191c1f",
+                        "on-secondary-fixed": "#191c1e",
+                        "outline": "#727785",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-container": "#606365",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#001a42",
+                        "surface-container-high": "#e6e8ec",
+                        "on-surface-variant": "#424754",
+                        "tertiary-fixed": "#ffdad7",
+                        "outline-variant": "#c2c6d6",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f7f9fd",
+                        "surface-container": "#eceef2",
+                        "surface-tint": "#005ac2",
+                        "tertiary-container": "#da3437",
+                        "primary": "#0058be",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fd",
+                        "secondary": "#5c5f60",
+                        "surface": "#f7f9fd",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e1e2e4",
+                        "on-secondary-fixed-variant": "#444749",
+                        "secondary-fixed-dim": "#c5c6c8",
+                        "secondary-container": "#dee0e2",
+                        "on-tertiary-fixed": "#410004",
+                        "on-primary-fixed-variant": "#004395",
+                        "primary-container": "#2170e4",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-container-low": "#f2f4f8",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#adc6ff",
+                        "surface-dim": "#d8dade",
+                        "on-background": "#191c1f",
+                        "tertiary": "#b61722",
+                        "surface-variant": "#e0e2e6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "inline-gutter": "12px",
+                        "safe-area-bottom": "34px",
+                        "stack-gap-lg": "20px",
+                        "stack-gap-md": "12px",
+                        "container-padding": "16px",
+                        "stack-gap-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim min-h-screen p-8 md:p-16 font-body-md text-on-surface">
+<div class="max-w-7xl mx-auto">
+<header class="mb-12 text-center md:text-left">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">交互设计原型展示</h1>
+<p class="text-on-surface-variant max-w-2xl">针对待办事项管理应用的线框图展示。包含正常使用、状态反馈及异常流、以及删除二次确认交互。</p>
+</header>
+<div class="flex flex-col md:flex-row gap-12 justify-center items-start overflow-x-auto pb-8">
+<!-- BOARD 01: NORMAL USAGE -->
+<div class="flex-none">
+<div class="text-center mb-4">
+<span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full text-label-sm font-label-sm uppercase">Board 01</span>
+<h3 class="mt-2 font-headline-md text-headline-md">正常使用状态</h3>
+</div>
+<div class="phone-container bg-surface border border-outline-variant">
+<div class="notch"></div>
+<!-- TopAppBar -->
+<div class="flex justify-between items-center w-full px-container-padding h-14 bg-surface dark:bg-inverse-surface border-b border-outline-variant mt-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">checklist</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">我的待办</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</div>
+<!-- Content -->
+<div class="p-container-padding space-y-stack-gap-lg">
+<div class="text-label-sm text-secondary">当前有 3 个未完成</div>
+<!-- Input Section -->
+<div class="flex gap-2">
+<input class="flex-1 h-12 border border-outline-variant rounded-lg px-4 bg-surface focus:outline-none focus:border-primary placeholder:text-outline" placeholder="请输入待办事项" type="text"/>
+<button class="bg-primary text-on-primary px-6 h-12 rounded-lg font-bold transition-transform active:scale-95">添加</button>
+</div>
+<!-- Filters -->
+<div class="flex border-b border-outline-variant">
+<button class="flex-1 py-2 text-primary border-b-2 border-primary font-bold text-label-sm">全部</button>
+<button class="flex-1 py-2 text-secondary hover:bg-surface-container-low transition-colors text-label-sm">未完成</button>
+<button class="flex-1 py-2 text-secondary hover:bg-surface-container-low transition-colors text-label-sm">已完成</button>
+</div>
+<!-- List Section -->
+<div class="space-y-stack-gap-sm">
+<div class="flex items-center justify-between p-4 bg-white border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 border-2 border-outline rounded-md flex items-center justify-center"></div>
+<span class="text-body-md text-on-surface">准备周会资料</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">delete</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-white border border-outline-variant rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 border-2 border-outline rounded-md"></div>
+<span class="text-body-md text-on-surface">健身一小时</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">delete</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl opacity-60">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 bg-primary rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[16px]">check</span>
+</div>
+<span class="text-body-md text-secondary line-through">买牛奶</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">delete</span>
+</div>
+</div>
+</div>
+<!-- BottomNavBar -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-surface border-t border-outline-variant">
+<div class="flex flex-col items-center justify-center text-primary font-bold scale-95 transition-transform">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-label-sm">全部</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-high transition-colors px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined">pending_actions</span>
+<span class="text-label-sm">未完成</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-high transition-colors px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined">task_alt</span>
+<span class="text-label-sm">已完成</span>
+</div>
+</div>
+</div>
+</div>
+<!-- BOARD 02: STATES SHOWCASE -->
+<div class="flex-none">
+<div class="text-center mb-4">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface rounded-full text-label-sm font-label-sm uppercase">Board 02</span>
+<h3 class="mt-2 font-headline-md text-headline-md">状态反馈 (加载/空/错误)</h3>
+</div>
+<div class="phone-container bg-surface-dim border border-outline-variant">
+<div class="notch"></div>
+<div class="pt-16 px-container-padding space-y-12 h-full flex flex-col">
+<!-- Loading State -->
+<div class="flex flex-col items-center justify-center p-8 bg-surface rounded-2xl border border-outline-variant">
+<div class="w-8 h-8 border-4 border-primary border-dashed rounded-full animate-spin mb-4"></div>
+<span class="text-body-md text-primary font-bold">正在加载中...</span>
+</div>
+<!-- Empty State -->
+<div class="flex flex-col items-center justify-center p-8 bg-surface rounded-2xl border border-outline-variant flex-1 max-h-[220px]">
+<div class="w-16 h-16 bg-surface-container rounded-xl flex items-center justify-center mb-4 border border-outline-variant">
+<span class="material-symbols-outlined text-outline text-[40px]">inbox</span>
+</div>
+<span class="text-body-lg text-secondary">暂无待办事项</span>
+<p class="text-label-sm text-outline mt-1 text-center">点击上方添加按钮开启高效的一天</p>
+</div>
+<!-- Error State -->
+<div class="flex flex-col items-center justify-center p-8 bg-error-container rounded-2xl border border-error/20">
+<span class="material-symbols-outlined text-error text-[40px] mb-2">cloud_off</span>
+<span class="text-body-md text-error font-bold">加载失败</span>
+<p class="text-label-sm text-on-error-container opacity-70 mb-4">网络连接不稳定，请稍后重试</p>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full text-label-sm font-bold shadow-sm active:scale-95">重新加载</button>
+</div>
+</div>
+</div>
+</div>
+<!-- BOARD 03: DELETION MODAL -->
+<div class="flex-none">
+<div class="text-center mb-4">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-label-sm font-label-sm uppercase">Board 03</span>
+<h3 class="mt-2 font-headline-md text-headline-md">删除二次确认</h3>
+</div>
+<div class="phone-container bg-surface border border-outline-variant">
+<div class="notch"></div>
+<!-- Content (Same as Board 01 but muted) -->
+<div class="blur-[1px] grayscale-[0.2]">
+<div class="flex justify-between items-center w-full px-container-padding h-14 border-b border-outline-variant mt-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">checklist</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold">我的待办</span>
+</div>
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+<div class="p-container-padding space-y-stack-gap-lg">
+<div class="flex gap-2">
+<div class="flex-1 h-12 border border-outline-variant rounded-lg bg-surface"></div>
+<div class="bg-primary-fixed-dim w-20 h-12 rounded-lg"></div>
+</div>
+<div class="space-y-stack-gap-sm">
+<div class="h-16 bg-white border border-outline-variant rounded-xl"></div>
+<div class="h-16 bg-white border border-outline-variant rounded-xl border-primary shadow-sm ring-1 ring-primary/20"></div>
+<div class="h-16 bg-white border border-outline-variant rounded-xl"></div>
+</div>
+</div>
+</div>
+<!-- Overlay -->
+<div class="absolute inset-0 bg-black/40 z-[60] backdrop-blur-[2px]"></div>
+<!-- Bottom Sheet -->
+<div class="absolute bottom-0 left-0 w-full bg-surface rounded-t-[32px] z-[70] p-6 shadow-2xl animate-in slide-in-from-bottom duration-300">
+<div class="w-10 h-1 bg-outline-variant rounded-full mx-auto mb-6"></div>
+<div class="space-y-4">
+<div class="space-y-2">
+<h4 class="font-headline-md text-headline-md text-on-surface">确认删除这条任务？</h4>
+<p class="text-body-md text-on-surface-variant">删除后该任务会从列表中移除。接口失败时保留原任务并提示失败。</p>
+</div>
+<div class="flex gap-3 pt-4 pb-safe-area-bottom">
+<button class="flex-1 py-4 bg-secondary-fixed text-on-secondary-fixed font-bold rounded-2xl transition-colors hover:bg-secondary-fixed-dim active:scale-95">取消</button>
+<button class="flex-1 py-4 bg-error text-on-error font-bold rounded-2xl transition-colors hover:bg-on-tertiary-fixed-variant active:scale-95 shadow-lg shadow-error/20">删除</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-16 pt-8 border-t border-outline-variant text-center text-outline text-label-sm">
+            © 2024 Design Showcase Framework. Designed for validation and documentation.
+        </footer>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.96)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>
