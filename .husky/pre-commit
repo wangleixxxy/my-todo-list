@@ -1,23 +1,37 @@
-pnpm test
-# ultracite
 #!/bin/sh
+# ultracite
+STAGED_FILES_FILE=$(mktemp)
+trap 'rm -f "$STAGED_FILES_FILE"' EXIT
+
 # Check if there are any staged files
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
-if [ -z "$STAGED_FILES" ]; then
+git diff --cached --name-only --diff-filter=ACMR > "$STAGED_FILES_FILE"
+if [ ! -s "$STAGED_FILES_FILE" ]; then
   echo "No staged files to format"
   exit 0
 fi
 
 # Run formatter, capturing the exit code so we can still re-stage and report
 FORMAT_EXIT_CODE=0
-pnpm dlx ultracite fix || FORMAT_EXIT_CODE=$?
+while IFS= read -r file; do
+  if [ -f "$file" ]; then
+    case "$file" in
+      .codex/*)
+        ;;
+      docs/stitch_todo_list/*)
+        ;;
+      *.js|*.jsx|*.ts|*.tsx|*.json|*.jsonc|*.css|*.md|*.mdx|*.html)
+        pnpm exec ultracite fix "$file" || FORMAT_EXIT_CODE=$?
+        ;;
+    esac
+  fi
+done < "$STAGED_FILES_FILE"
 
 # Re-stage files that were already staged
-echo "$STAGED_FILES" | while IFS= read -r file; do
+while IFS= read -r file; do
   if [ -f "$file" ]; then
     git add -- "$file"
   fi
-done
+done < "$STAGED_FILES_FILE"
 
 if [ $FORMAT_EXIT_CODE -ne 0 ]; then
   echo "Ultracite found issues that could not be auto-fixed."

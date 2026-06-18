@@ -1,2 +1,3 @@
+// biome-ignore lint/performance/noBarrelFile: Drizzle loads this schema aggregation module.
 export * from "./auth";
-export {};
+export * from "./todo";
