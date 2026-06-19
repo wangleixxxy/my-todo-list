@@ -1,0 +1,14 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "todo-workflow-api",
+	"main": "./src/worker.ts",
+	"compatibility_date": "2026-06-19",
+	"compatibility_flags": ["nodejs_compat"],
+	"vars": {
+		"NODE_ENV": "production",
+		"SKIP_ENV_VALIDATION": "true"
+	},
+	"observability": {
+		"enabled": true
+	}
+}
