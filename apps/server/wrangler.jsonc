@@ -5,6 +5,8 @@
 	"compatibility_date": "2026-06-19",
 	"compatibility_flags": ["nodejs_compat"],
 	"vars": {
+		"BETTER_AUTH_URL": "https://todo-workflow-api.wangleixxxy.workers.dev",
+		"CORS_ORIGIN": "https://my-todo-list-ckc.pages.dev",
 		"NODE_ENV": "production",
 		"SKIP_ENV_VALIDATION": "true"
 	},

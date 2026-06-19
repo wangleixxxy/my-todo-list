@@ -13,11 +13,12 @@
   "dependencies": {
     "@my-todo-list/auth": "workspace:*",
     "@my-todo-list/db": "workspace:*",
-    "drizzle-orm": "^0.45.1",
     "@my-todo-list/env": "workspace:*",
+    "@neondatabase/serverless": "^1.1.0",
     "@trpc/client": "catalog:",
     "@trpc/server": "catalog:",
     "dotenv": "catalog:",
+    "drizzle-orm": "^0.45.1",
     "zod": "catalog:"
   },
   "devDependencies": {
